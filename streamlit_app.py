@@ -38,7 +38,7 @@ rows = run_query('select distinct "brandName" from pleasantrees_erp.leaflogix."P
 
 # Print results.
 for row in rows:
-    st.write(f"{row} has a :{row}:")
+    st.write(f"{row[0]} has a :{row}:")
 
 product = run_query('select distinct "brandName" from pleasantrees_erp.leaflogix."Products" limit 10;')
 
