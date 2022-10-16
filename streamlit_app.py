@@ -12,6 +12,16 @@ def init_connection():
         **st.secrets["snowflake"], client_session_keep_alive=True
     )
 
+def snowflakeconnect():
+  connect=snowflake.connector.connect(
+      user=st.secrets['user'],password=st.secrets['password'],
+      account=st.secrets['account'] ,
+      database = st.secrets['database'],
+      schema = st.secrets['schema'],
+      warehouse = st.secrets['warehouse'])
+  cx=connect.cursor()
+  return cx                  
+
 conn = init_connection()
 
 # Perform query.
