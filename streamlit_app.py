@@ -6,12 +6,12 @@ import streamlit as st
 
 # Initialize connection.
 # Uses st.experimental_singleton to only run once.
+#@st.experimental_singleton
+#def init_connection():
+ #   return snowflake.connector.connect(
+  #      **st.secrets["snowflake"], client_session_keep_alive=True
+   # )
 @st.experimental_singleton
-def init_connection():
-    return snowflake.connector.connect(
-        **st.secrets["snowflake"], client_session_keep_alive=True
-    )
-
 def snowflakeconnect():
   connect=snowflake.connector.connect(
       user=st.secrets['user'],password=st.secrets['password'],
@@ -22,7 +22,7 @@ def snowflakeconnect():
   cx=connect.cursor()
   return cx                  
 
-conn = init_connection()
+conn = snowflakeconnect()
 
 # Perform query.
 # Uses st.experimental_memo to only rerun when the query changes or after 10 min.
