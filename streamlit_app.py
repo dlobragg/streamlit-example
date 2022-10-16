@@ -3,6 +3,8 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
+import snowflake.connector
+from snowflake.connector import ProgrammingError
 
 # Initialize connection.
 # Uses st.experimental_singleton to only run once.
